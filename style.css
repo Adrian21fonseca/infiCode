@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.logo{
+    width: 140px;
+}
+
+.bi-bi-list{
+}
+
+.navegador{
+    display: none;
+}
+
+.link-navegador{
+    display: flex;
+    list-style-type: none;
+}
