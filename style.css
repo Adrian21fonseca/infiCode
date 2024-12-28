@@ -4,18 +4,23 @@
     box-sizing: border-box;
 }
 
+
+/* ....................Inicio del header.................. */
 header{
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
+    background: rgb(207,250,255);
+    background: linear-gradient(90deg, rgba(207,250,255,1) 43%, rgba(64,211,255,1) 68%, rgba(27,34,244,1) 100%);
 }
 
 .logo{
-    width: 140px;
+    width: 160px;
 }
 
 .bi-bi-list{
+    display: flex;
 }
 
 .navegador{
@@ -23,6 +28,13 @@ header{
 }
 
 .link-navegador{
-    display: flex;
+    gap: 1rem;
     list-style-type: none;
 }
+
+.link-navegador a{
+    text-decoration: none;
+    color: black;
+}
+
+/* ....................Final del header.................. */
