@@ -16,25 +16,58 @@ header{
 }
 
 .logo{
-    width: 160px;
+    width: 120px;
 }
 
-.bi-bi-list{
+.abrir-menu{
     display: flex;
+    background: none;
+    border: none;
 }
 
 .navegador{
-    display: none;
+    opacity: 0;
+    visibility: hidden;
+
+    position: absolute ;
+    display: flex;
+    top: 0;
+    right: 0;
+    flex-direction: column;
+    padding: 15px;
+    bottom: 0;
+    width: 40%;
+        background: rgb(8,112,198);
+    background: linear-gradient(32deg, rgba(8,112,198,1) 56%, rgba(0,162,255,1) 100%);
+    box-shadow: 0 0 0 100vh rgba(8, 112, 197, 0.822);
+}
+
+.navegador.visible{
+    opacity: 1;
+    visibility: visible;
+}
+
+.cerrar-menu{
+    display: flex;
+    justify-content: end;
+    margin: 35px 0;
+    background: none;
+    border: none;
+    color: white;
 }
 
 .link-navegador{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
     gap: 1rem;
     list-style-type: none;
 }
 
 .link-navegador a{
     text-decoration: none;
-    color: black;
+    color: white;
+    font-size: 18px;
 }
 
 /* ....................Final del header.................. */
