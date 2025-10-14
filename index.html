@@ -13,10 +13,10 @@
         <img class="reveal" src="ICONs/infiCode-logo_4K-png.png" alt="logo-infiCode" width="150px">
         <nav class="navbar reveal">
             <a href="#">Inicio</a>
-            <a href="#">Nosotros</a>
-            <a href="#">Servicios</a>
-            <a href="#">Proyectos</a>
-            <a class="contacto" href="#">Contáctanos</a>
+            <a href="#Nosotros">Nosotros</a>
+            <a href="#Servicios">Servicios</a>
+            <a href="#Proyectos">Proyectos</a>
+            <a class="contacto" href="#Contacto">Contáctanos</a>
         </nav>
     </header>
 
@@ -33,11 +33,11 @@
                 <p>En InfiCode, creamos soluciones digitales que superan tus expectativas, ayudándote a destacar en un entorno competitivo.</p>
 
                 <div class="BTNs">
-                    <a href="#">
+                    <a href="#Proyectos">
                         <button class="btn-proyectos">Conoce nuestros proyectos</button>
                     </a>
 
-                    <a href="#">
+                    <a href="#Contacto">
                         <button class="btn-contacto">Contáctanos</button>
                     </a>
                 </div>
@@ -199,9 +199,89 @@
 
             </div>
 
+            <div class="proximamente">
+                <p>¿Quieres ver más? Próximamente más proyectos</p>
+            </div>
+
+        </section>
+
+        <section id="Contacto">
+
+            <div class="contenedor">
+
+                <div class="texto-informativo">
+
+                    <h2>Hablemos de tu <span>proyecto</span></h2>
+                    <p>Estamos listos para ayudarte a hacer realidad tus ideas</p>
+
+                </div>
+
+                <form class="formulario" action="">
+
+                    <label for="Nombre">Nombre</label>
+                    <input id="Nombre" type="text" placeholder="Tu nombre completo" required>
+
+                    <label for="Correo">Email</label>
+                    <input id="Correo" type="email" placeholder="Tu@email.com">
+
+                    <label for="Especializacion">Especializacion o tipo de negocio</label>
+                    <input id="Especializacion" type="text" placeholder="Psicólog@, Abogad@, emprendedor/ra, etc.">
+
+                    <label for="Mensaje">Mensaje</label>
+                    <textarea name="Mensaje" id="Mensaje" placeholder="Cuentanos sobre tu proyecto..." required></textarea>
+
+                    <button type="submit">Enviar</button>
+
+                    <hr>
+
+                    <div class="correo">
+                        <p>También puedes escribirnos a <a href="mailto:infocode25@gmail.com">infocode25@gmail.com</a></p>
+                    </div>
+                    
+                </form>
+
+            </div> 
+
         </section>
 
     </main>
+
+    <footer>
+
+        <div class="contenedor-footer">
+
+            <div class="logo-spam">
+                <img src="ICONs/infiCode-logo_4K-png.png" alt="logo" width="100px">
+                <p>Transformamos ideas en experiencias digitales.</p>
+            </div>
+
+            <div class="enlaces-rapido">
+                <p>Enlaces rápidos</p>
+
+                <div class="enlaces">
+                    <a href="#">Inicio</a>
+                    <a href="#Servicios">Servicios</a>
+                    <a href="#Contacto">Contacto</a>
+                </div>
+            </div>
+
+            <div class="redes">
+                <p>Síguenos</p>
+                <a target="_blank" href="https://www.instagram.com/inficode.co/"><img src="ICONs/logotipo-de-instagram.png" alt="instagram" width="20px"></a>
+            </div>
+            
+            
+        </div>
+
+        <hr>
+
+        <div class="copy">
+            <p>© 2025 InfiCode. Todos los derechos reservados.</p>
+        </div>
+
+    </footer>
+
+    <script src="main.js"></script>
 
 </body>
 </html>
