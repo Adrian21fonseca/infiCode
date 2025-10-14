@@ -70,14 +70,27 @@ header a:hover{
 
 /* ------- ESTILOS DEL HERO ------- */
 
+.reveal {
+    opacity: 0;                 /* Empieza invisible */
+    transform: translateY(30px); /* Desplazamiento inicial */
+    animation: fadeUp 1.8s forwards; /* Duración 1s, mantiene estado final */
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 #hero{
     display: flex;
-    padding: 0 0 0 30px;
+    padding: 0px 0 0 30px;
 }
 
 #hero h1{
-    width: 82%;
+    width: 83%;
     margin: 0;
     font-size: 60px;
     line-height: 70px;
@@ -89,7 +102,7 @@ header a:hover{
 }
 
 #hero p{
-    width: 90%;
+    width: 91%;
     margin: 0;
     font-size: 20px;
     color: #757575;
@@ -147,9 +160,6 @@ header a:hover{
     color: #ffffff;
 }
 
-
-
-
 .heroIlustacion{
     width: 50%;
 }
@@ -157,4 +167,209 @@ header a:hover{
 .heroIlustacion img{
     display: flex;
     margin: 0 auto;
+}
+
+/* ------- ESTILOS DEL NOSOTROS ------- */
+
+#Nosotros{
+    padding: 80px 30px;
+}
+
+.texto-informativo{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 0 152px 64px;
+}
+
+.texto-informativo h2{
+    font-size: 36px;
+    margin-top: 0;
+    margin-bottom: 24px;
+}
+
+.texto-informativo span{
+    color: #3F71AE;
+}
+
+.texto-informativo p{
+    color: #757575;
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.cards{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.card-informativo{
+    display: flex;
+    height: 233px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 10px;
+    padding: 24px;
+    box-shadow: 0px 0px 20px #3f71ae29;
+    transition: 0.6s ease;
+}
+
+.card-informativo:hover{
+    transform: scale(1.06);
+    transition: 0.6s ease;
+}
+
+.card-informativo img{
+    padding: 14px;
+    background: #3f71ae18;
+    border-radius: 20px;
+}
+
+.card-informativo h3{
+    font-size: 20px;
+    color: #1c1c1c;
+    margin: 16px auto 0;
+}
+
+.card-informativo p{
+    font-size: 14px;
+    color: #757575;
+    margin: 16px auto 0;
+}
+
+
+
+/* ------- ESTILOS DEL SERVICIOS ------- */
+
+
+
+#Servicios{
+    background: #F5F7FA;
+    padding: 80px 30px;
+}
+
+.cards-servicios{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 50px;
+
+}
+
+.card-informativo-servicio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 40px 24px 24px;
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow: 0 0 20px #3f71ae12;
+    transition: .4s ease;
+}
+
+.card-informativo-servicio img{
+    padding: 16px;
+    background: #3f71ae18;
+    border-radius: 20px;
+}
+
+.card-informativo-servicio h3{
+    font-size: 24px;
+    color: #1c1c1c;
+    margin-bottom: 0;
+}
+
+.card-informativo-servicio p{
+    color: #757575;
+    margin-bottom: 0;
+}
+
+.card-informativo-servicio:hover{
+    transform: scale(1.04);
+    transition: .4s ease;
+}
+
+
+
+/* ------- ESTILOS DEL PROYECTOS ------- */
+
+
+
+#Proyectos{
+    padding: 80px 30px;
+}
+
+.cards-proyectos{
+    display: flex;
+    justify-content: space-around;
+}
+
+.card-informativo-Proyecto{
+    width: 366px;
+    border-radius: 10px;
+    box-shadow: 0 0 6px #1c1c1c38;
+    transition: .8s ease;
+}
+
+.card-informativo-Proyecto:hover{
+    transform: scale(1.03);
+    transition: .8s ease;
+}
+
+.card-informativo-Proyecto img{
+    width: 100%;
+    height: 192px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card-informativo-Proyecto .espacio{
+    padding: 24px;
+}
+
+.card-informativo-Proyecto h3{
+    margin: 0;
+    font-size: 20px;
+    color: #1c1c1c;
+}
+
+.card-informativo-Proyecto h3 a{
+    color: #1c1c1c;
+    transition: .5s ease;
+}
+
+.card-informativo-Proyecto h3 a:hover{
+    color: #3F71AE;
+    transition: .5s ease;
+}
+
+.card-informativo-Proyecto p{
+    margin: 16px 0px 0px;
+    font-size: 14px;
+    color: #757575;
+}
+
+.tegnologias{
+    margin-top: 16px;
+    display: flex;
+    gap: 10px;
+}
+
+.tegnologias p{
+    margin: 0;
+    font-size: 12px;
+    color: #3F71AE;
+    font-weight: 600;
+    background: #3f71ae29;
+    padding: 2px 10px;
+    border-radius: 10px;
+}
+
+.desarrollo p{
+    background: #75757546;
+    color: #757575;
 }
