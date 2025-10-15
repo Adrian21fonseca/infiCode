@@ -28,3 +28,11 @@ document.querySelector(".formulario").addEventListener("submit", function(e) {
     const cuerpo = encodeURIComponent(`Nombre: ${nombre}\nCorreo: ${correo}\nEspecialización: ${especializacion}\n\nMensaje:\n${mensaje}`);
     const mailto = `mailto:infocode25@gmail.com?subject=${asunto}&body=${cuerpo}`;
 });
+
+const toggle = document.getElementById('menu-toggle');
+const navbar = document.querySelector('.navbar');
+
+toggle.addEventListener('click', () => {
+    toggle.classList.toggle('active');
+    navbar.classList.toggle('active');
+});
