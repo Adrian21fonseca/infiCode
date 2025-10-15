@@ -29,10 +29,28 @@ document.querySelector(".formulario").addEventListener("submit", function(e) {
     const mailto = `mailto:infocode25@gmail.com?subject=${asunto}&body=${cuerpo}`;
 });
 
-const toggle = document.getElementById('menu-toggle');
-const navbar = document.querySelector('.navbar');
+document.addEventListener('DOMContentLoaded', () => {
+  // Soportamos ambos nombres que has usado en distintos momentos
+    const toggle = document.getElementById('menu-toggle') || document.getElementById('hamburger');
+    const navbar = document.querySelector('.navbar');
 
-toggle.addEventListener('click', () => {
-    toggle.classList.toggle('active');
-    navbar.classList.toggle('active');
+    // Si no existen, salimos sin romper la página
+    if (!toggle || !navbar) return;
+
+    // Seleccionamos los enlaces dentro del navbar
+    const links = navbar.querySelectorAll('a');
+
+    // Abrir / cerrar con el icono
+    toggle.addEventListener('click', () => {
+        toggle.classList.toggle('active');
+        navbar.classList.toggle('active');
+    });
+
+    // Cerrar el menú al hacer clic en cualquier enlace del navbar
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+        toggle.classList.remove('active');
+        navbar.classList.remove('active');
+        });
+    });
 });
