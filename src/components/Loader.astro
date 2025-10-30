@@ -18,10 +18,10 @@
     }
 
     .logo {
-        width: 220px; /* más grande y visible */
+        width: 300px; /* más grande y visible */
         height: auto;
         opacity: 0;
-        animation: draw 2.5s ease-in-out forwards;
+        animation: draw 3.5s ease-in-out forwards;
     }
 
     /* animación tipo “dibujado” con un barrido suave */
@@ -54,6 +54,6 @@
         setTimeout(() => {
         const loader = document.getElementById("loader");
         if (loader) loader.classList.add("loader-hidden");
-        }, 1500);
+        }, 2000);
     });
 </script>
