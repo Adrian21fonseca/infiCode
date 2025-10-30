@@ -1,0 +1,41 @@
+---
+---
+<style>
+    .loader-container {
+        @apply fixed inset-0 flex items-center justify-center bg-[#0b0d17] z-50 transition-opacity duration-700;
+    }
+
+    .loader-hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .logo {
+        @apply w-24 h-24;
+        animation: pulse 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+        0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 10px #3F71AE);
+        }
+        50% {
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 25px #3F71AE);
+        }
+    }
+    </style>
+
+    <div id="loader" class="loader-container">
+        <img src="/infiCode-icon_4K-png.png" alt="InfiCode Logo" class="logo" />
+    </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        setTimeout(() => {
+        const loader = document.getElementById("loader");
+        if (loader) loader.classList.add("loader-hidden");
+        }, 2500);
+    });
+</script>
