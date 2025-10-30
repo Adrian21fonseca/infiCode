@@ -2,40 +2,58 @@
 ---
 <style>
     .loader-container {
-        @apply fixed inset-0 flex items-center justify-center bg-[#0b0d17] z-50 transition-opacity duration-700;
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #ffffff; /* fondo blanco */
+        z-index: 50;
+        transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
     }
 
     .loader-hidden {
         opacity: 0;
-        pointer-events: none;
+        visibility: hidden;
     }
 
     .logo {
-        @apply w-24 h-24;
-        animation: pulse 2s infinite ease-in-out;
+        width: 220px; /* más grande y visible */
+        height: auto;
+        opacity: 0;
+        animation: draw 2.5s ease-in-out forwards;
     }
 
-    @keyframes pulse {
-        0%, 100% {
-        transform: scale(1);
-        filter: drop-shadow(0 0 10px #3F71AE);
+    /* animación tipo “dibujado” con un barrido suave */
+    @keyframes draw {
+        0% {
+        opacity: 0;
+        clip-path: inset(0 100% 0 0);
         }
-        50% {
-        transform: scale(1.1);
-        filter: drop-shadow(0 0 25px #3F71AE);
+        60% {
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+        }
+        100% {
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
         }
     }
-    </style>
+</style>
 
-    <div id="loader" class="loader-container">
-        <img src="/infiCode-icon_4K-png.png" alt="InfiCode Logo" class="logo" />
-    </div>
+<div id="loader" class="loader-container">
+    <img
+        src="/images/infiCode-icon_4K-png.png"
+        alt="InfiCode Logo"
+        class="logo"
+    />
+</div>
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
         const loader = document.getElementById("loader");
         if (loader) loader.classList.add("loader-hidden");
-        }, 2500);
+        }, 1500);
     });
 </script>
