@@ -1,0 +1,174 @@
+<section class="hero" id="hero">
+    <canvas id="particles"></canvas>
+
+    <div class="content">
+        <h1>Innovamos para llevar tu visión al siguiente nivel.</h1> 
+        <p>En InfiCode, creamos soluciones digitales que superan tus expectativas, ayudándote a destacar en un entorno competitivo.</p>
+        <a href="#contacto" class="cta">Hablemos de tu proyecto</a>
+    </div>
+
+    <script>
+        const canvas = document.getElementById("particles");
+        const ctx = canvas.getContext("2d");
+        let particles = [];
+        let mouse = { x: null, y: null, radius: 100 };
+
+        // Ajustar tamaño del canvas
+        function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        }
+        window.addEventListener("resize", resizeCanvas);
+        resizeCanvas();
+
+        // Crear partículas
+        class Particle {
+        constructor(x, y, size, speedX, speedY) {
+            this.x = x;
+            this.y = y;
+            this.size = size;
+            this.speedX = speedX;
+            this.speedY = speedY;
+        }
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+
+            // Rebote en los bordes
+            if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+            if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+
+            // Interacción con el mouse
+            const dx = mouse.x - this.x;
+            const dy = mouse.y - this.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            if (distance < mouse.radius) {
+            this.x -= dx / 10;
+            this.y -= dy / 10;
+            }
+        }
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = "rgba(0, 153, 255, 0.8)";
+            ctx.fill();
+        }
+        }
+
+        // Inicializar partículas
+        function initParticles() {
+        particles = [];
+        const num = Math.floor(window.innerWidth / 10); // densidad
+        for (let i = 0; i < num; i++) {
+            const x = Math.random() * canvas.width;
+            const y = Math.random() * canvas.height;
+            const size = Math.random() * 2 + 1;
+            const speedX = (Math.random() - 0.5) * 0.6;
+            const speedY = (Math.random() - 0.5) * 0.6;
+            particles.push(new Particle(x, y, size, speedX, speedY));
+        }
+        }
+
+        // Animación
+        function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let particle of particles) {
+            particle.update();
+            particle.draw();
+        }
+        connectParticles();
+        requestAnimationFrame(animate);
+        }
+
+        // Conexiones entre partículas
+        function connectParticles() {
+        for (let a = 0; a < particles.length; a++) {
+            for (let b = a; b < particles.length; b++) {
+            const dx = particles[a].x - particles[b].x;
+            const dy = particles[a].y - particles[b].y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            if (distance < 100) {
+                ctx.strokeStyle = `rgba(0, 153, 255, ${1 - distance / 100})`;
+                ctx.lineWidth = 0.5;
+                ctx.beginPath();
+                ctx.moveTo(particles[a].x, particles[a].y);
+                ctx.lineTo(particles[b].x, particles[b].y);
+                ctx.stroke();
+            }
+            }
+        }
+        }
+
+        // Mouse movimiento
+        window.addEventListener("mousemove", (e) => {
+        mouse.x = e.x;
+        mouse.y = e.y;
+        });
+
+        window.addEventListener("mouseout", () => {
+        mouse.x = null;
+        mouse.y = null;
+        });
+
+        initParticles();
+        animate();
+    </script>
+
+    <style>
+        .hero {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000000;
+        }
+
+        canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            color: #fff;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 1.3rem;
+            color: #ccc;
+            margin: 1rem 0 2rem;
+        }
+
+        .cta {
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
+            color: #fff;
+            padding: 0.9rem 2rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-weight: 500;
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 114, 255, 0.3);
+        }
+    </style>
+</section>

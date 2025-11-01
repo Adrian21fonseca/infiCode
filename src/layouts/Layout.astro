@@ -1,6 +1,8 @@
 ---
 import "../styles/global.css";
 import Loader from "../components/Loader.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
 ---
 
 <html lang="es">
@@ -12,6 +14,8 @@ import Loader from "../components/Loader.astro";
     </head>
     <body class="bg-[#ffffff] text-white font-sans">
         <Loader />
+        <Header />
+        <Hero />
         <slot />
     </body>
 </html>

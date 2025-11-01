@@ -8,8 +8,8 @@
         align-items: center;
         justify-content: center;
         background-color: #ffffff; /* fondo blanco */
-        z-index: 50;
-        transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+        z-index: 9999;
+        transition: opacity 1.2s ease-in-out, visibility 1.2s ease-in-out;
     }
 
     .loader-hidden {
@@ -43,7 +43,7 @@
 
 <div id="loader" class="loader-container">
     <img
-        src="/images/infiCode-icon_4K-png.png"
+        src="/images/infiCode-logo_4K-png.png"
         alt="InfiCode Logo"
         class="logo"
     />
@@ -54,6 +54,6 @@
         setTimeout(() => {
         const loader = document.getElementById("loader");
         if (loader) loader.classList.add("loader-hidden");
-        }, 2000);
+        }, 3000);
     });
 </script>
