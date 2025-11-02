@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #f9f9f9;
+    font-family: "Poppins", sans-serif;
+    overflow: hidden; /* Evita scroll mientras carga */
+}
+
+/* Loader */
+.loader-container {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    z-index: 999999999;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+.loader-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Logo */
+.logo {
+    width: 300px;
+    opacity: 0;
+    animation: revealLogo 2.5s ease forwards;
+}
+
+/* 🔹 Animación de aparición de izquierda a derecha */
+@keyframes revealLogo {
+    0% {
+        opacity: 0;
+        clip-path: inset(0 100% 0 0);
+        transform: translateX(-20px);
+    }
+    100% {
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+        transform: translateX(0);
+    }
+}
+
+/* 🔹 Animación de desaparición suave del logo */
+.logo-exit {
+    animation: hideLogo 0.8s ease forwards;
+}
+
+@keyframes hideLogo {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+
+/* Contenido oculto mientras carga */
+.hidden {
+    display: none;
+}
+
+
+
+
+/* ------------ HEADER ------------- */
+
+header{
+    position: fixed;
+    z-index: 9999999;
+    top: 20px;
+    width: 70%;
+    padding: 5px 10px;
+    border-radius: 50px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 20px #00000020;
+
+        /* Glassmorphism */
+    background: rgba(255, 255, 255, 0.119); /* transparencia ligera */
+    backdrop-filter: blur(5px);           /* desenfoque del fondo */
+    -webkit-backdrop-filter: blur(5px);   /* soporte Safari */
+}
+
+header ul{
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+header a{
+    color: #000000;
+    text-decoration: none;
+}
+
+.header-logo{
+    width: 65px;
+}
+
+.descarga{
+    padding: 12px 10px;
+    background: #3F71AE;
+    color: #ffffff;
+    font-size: 14px;
+    border: none;
+    border-radius: 50px;
+    transition: .8s ease;
+}
+
+.descarga:hover{
+    transform: scale(1.05);
+    transition: .8s ease;
+}
+
+
+/* Hero full screen */
+
+
+#hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000000;
+}
+
+#tsparticles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.hero-content {
+    text-align: left;
+    padding: 0 60px;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    width: 45%;
+    margin-top: 50px;
+    font-size: 60px;
+    margin-bottom: 0px;
+    line-height: 70px;
+}
+
+.hero-content span{
+    color: #3F71AE;
+}
+
+.hero-content p {
+    width: 48%;
+    font-size: 20px;
+    color: #757575;
+    margin-bottom: 30px;
+}
+
+.botones{
+    display: flex;
+    gap: 20px;
+}
+
+.cta-1 {
+    padding: 10px 30px;
+    background: #3F71AE;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: .8s ease;
+}
+
+.cta-2 {
+    padding: 8px 30px;
+    background: transparent;
+    color: #3F71AE;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: .8s ease;
+    border: 2px solid #3F71AE;
+}
+
+.cta-1:hover {
+    background: #316ab0;
+    transition: .8s ease;
+}
+
+.cta-2:hover {
+    background: #316ab0;
+    color: #ffffff;
+    transition: .8s ease;
+}
