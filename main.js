@@ -31,6 +31,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
+const toggleThemeBtn = document.getElementById("toggle-theme");
+const body = document.body;
+
+// Ver si ya hay un tema guardado en localStorage
+if (localStorage.getItem("theme") === "dark") {
+    body.classList.add("dark-theme");
+    toggleThemeBtn.textContent = "☀️"; // icono de sol
+}
+
+toggleThemeBtn.addEventListener("click", () => {
+    body.classList.toggle("dark-theme");
+    if (body.classList.contains("dark-theme")) {
+        toggleThemeBtn.textContent = "☀️"; // modo oscuro activo → mostrar sol
+        localStorage.setItem("theme", "dark");
+    } else {
+        toggleThemeBtn.textContent = "🌙"; // modo claro activo → mostrar luna
+        localStorage.setItem("theme", "light");
+    }
+});
+
+
+
+
+
 // Animación de aparición de las tarjetas
 const estadisticasTrabajo = document.querySelectorAll('.como-trabajamos .estadistica');
 
@@ -88,4 +113,81 @@ const observerServicios = new IntersectionObserver((entries, obs) => {
 },{threshold: 0.3});
 
 servicios.forEach(servicio => observerServicios.observe(servicio));
+
+
+
+
+
+
+// ====== Carrusel 3D Infinito ======
+const carrusel = document.querySelector('.carrusel-proyectos');
+const track = document.querySelector('.carrusel-track');
+const proyectos = Array.from(document.querySelectorAll('.proyecto'));
+let current = 0;
+
+// Actualiza las clases según la posición
+function updateCarrusel() {
+    proyectos.forEach((proyecto, index) => {
+        proyecto.classList.remove('focus','prev','next','other');
+
+        if(index === current) proyecto.classList.add('focus');
+        else if(index === (current - 1 + proyectos.length) % proyectos.length) proyecto.classList.add('prev');
+        else if(index === (current + 1) % proyectos.length) proyecto.classList.add('next');
+        else proyecto.classList.add('other');
+    });
+
+    // Centrar la card focus en el carrusel
+    const card = proyectos[current];
+    const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+    const containerCenter = carrusel.offsetWidth / 2;
+    const scrollPosition = cardCenter - containerCenter;
+    carrusel.scrollTo({
+        left: scrollPosition,
+        behavior: 'smooth'
+    });
+}
+
+// ====== Drag con mouse ======
+let startX = 0;
+let isDragging = false;
+
+carrusel.addEventListener('mousedown', e => {
+    startX = e.pageX;
+    isDragging = true;
+});
+
+document.addEventListener('mousemove', e => {
+    if(!isDragging) return;
+    const diff = e.pageX - startX;
+    // Opcional: puedes mover track mientras arrastras
+});
+
+document.addEventListener('mouseup', e => {
+    if(!isDragging) return;
+    const diff = e.pageX - startX;
+    if(diff > 50) current = (current - 1 + proyectos.length) % proyectos.length;
+    else if(diff < -50) current = (current + 1) % proyectos.length;
+    updateCarrusel();
+    isDragging = false;
+});
+
+document.addEventListener('mouseleave', () => {
+    isDragging = false;
+});
+
+// ====== Touch para móviles ======
+carrusel.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+});
+
+carrusel.addEventListener('touchend', e => {
+    const diff = e.changedTouches[0].clientX - startX;
+    if(diff > 50) current = (current - 1 + proyectos.length) % proyectos.length;
+    else if(diff < -50) current = (current + 1) % proyectos.length;
+    updateCarrusel();
+});
+
+// ====== Inicialización ======
+updateCarrusel();
+
 

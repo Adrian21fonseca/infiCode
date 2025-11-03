@@ -12,6 +12,31 @@ body {
     font-family: "Poppins", sans-serif;
 }
 
+body.dark-theme {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+body.dark-theme header {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+body.dark-theme .proyecto {
+    background: #1e1e1e;
+    color: #ffffff;
+}
+
+body.dark-theme .servicio {
+    background: #1e1e1e;
+    color: #ffffff;
+}
+
+body.dark-theme .carrusel-proyectos {
+    /* Si quieres algún ajuste visual específico en modo oscuro */
+}
+
+
 /* Loader */
 .loader-container {
     position: fixed;
@@ -115,20 +140,20 @@ header a{
     width: 65px;
 }
 
-.descarga{
-    padding: 12px 10px;
-    background: #3F71AE;
-    color: #ffffff;
-    font-size: 14px;
+.theme-btn {
+    padding: 10px;
+    background: #f5f5f5;
+    font-size: 15px;
+    border-radius: 100px;
     border: none;
-    border-radius: 50px;
-    transition: .8s ease;
+    cursor: pointer;
+    transition: 0.8s ease;
 }
 
-.descarga:hover{
-    transform: scale(1.05);
-    transition: .8s ease;
+.theme-btn:hover {
+    background: #2e619f;
 }
+
 
 
 /* Hero full screen */
@@ -264,7 +289,6 @@ header a{
 .como-trabajamos {
     position: relative;
     padding: 100px 50px;
-    background: rgba(255, 255, 255, 0.238);
     backdrop-filter: blur(20px);
     display: flex;
     justify-content: center;
@@ -282,7 +306,7 @@ header a{
     border-radius: 50%;
     width: 300px;
     height: 300px;
-    filter: blur(100px);
+    filter: blur(150px);
     opacity: 0.4;
     z-index: 0;
 }
@@ -311,7 +335,6 @@ header a{
 .como-trabajamos {
     font-size: 36px;
     color: #000000;
-    margin-bottom: 10px;
     opacity: 0;
     transform: translateY(50px);
     animation: fadeUp 1s forwards;
@@ -372,6 +395,7 @@ span{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background: #3f71ae1c;
     gap: 50px;
 }
 
@@ -410,24 +434,27 @@ span{
     border-radius: 16px;
     transition: transform 0.3s, box-shadow 0.3s, opacity 0.5s;
     opacity: 0;
-    transform: translateY(50px);
+    background: #ffffff;
     text-align: center;
 }
 
 .servicio img {
-    width: 80px;
+    width: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    background: #3f71ae1c;
     margin-bottom: 20px;
 }
 
 .servicio h3 {
     color: #000000;
-    font-size: 1.5rem;
+    font-size: 24px;
     margin-bottom: 10px;
 }
 
 .servicio p {
     color: #757575;
-    font-size: 1rem;
+    font-size: 16px;
 }
 
 /* Hover dinámico */
@@ -436,3 +463,147 @@ span{
     box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 
+
+
+/* ================== Sección de proyectos ================== */
+#proyectos{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    padding: 100px 60px;
+}
+
+/* Títulos y subtítulos */
+.contenido h2{
+    color: #000000;
+    text-align: center;
+    font-size: 36px;
+}
+
+.contenido p{
+    color: #757575;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+/* ================== Carrusel ================== */
+.carrusel-proyectos {
+    width: 100%;
+    height: 500px;
+    margin: 70px auto 0;
+    display: flex;
+    overflow: hidden; /* quitamos scroll horizontal */
+    perspective: 1500px; /* profundidad 3D */
+    justify-content: left;
+    align-items: center;
+}
+
+/* Wrapper interno para mover el carrusel */
+.carrusel-track {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    transition: transform 0.5s;
+    will-change: transform;
+}
+
+/* ================== Proyectos ================== */
+.proyecto{
+    width: 400px; /* tu ancho original */
+    height: auto;
+    margin-left: 10px;
+    padding: 15px;
+    transform-origin: center center;
+    transition: transform 0.5s, filter 0.5s, opacity 0.5s;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* Imagen del proyecto */
+.proyecto img{
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* Links y títulos */
+.proyecto a{
+    color: #000000;
+    text-decoration: none;
+    width: fit-content;
+}
+
+.proyecto h2{
+    font-size: 20px;
+    color: #000000;
+    width: fit-content;
+    transition: .8s ease;
+}
+
+.proyecto h2:hover{
+    color: #3F71AE;
+    transition: .8s ease;
+}
+
+.proyecto p{
+    font-size: 14px;
+    color: #757575;
+}
+
+/* ================== Efectos 3D ================== */
+/* Card central */
+.proyecto.focus {
+    transform: translateZ(1.1);
+    filter: blur(0);
+    opacity: 1;
+    z-index: 3;
+    box-shadow: 0 0 10px #284c7834;
+}
+
+/* Card lateral izquierda */
+.proyecto.prev {
+    transform: translateZ(-80px) scale(0.9) rotateY(-30deg);
+    filter: blur(2px);
+    opacity: 0.6;
+    z-index: 2;
+}
+
+/* Card lateral derecha */
+.proyecto.next {
+    transform: translateZ(-80px) scale(0.9) rotateY(30deg);
+    filter: blur(2px);
+    opacity: 0.6;
+    z-index: 2;
+}
+
+/* Cards más lejanas */
+.proyecto.other {
+    transform: translateZ(-160px) scale(0.8) rotateY(45deg);
+    filter: blur(4px);
+    opacity: 0.4;
+    z-index: 1;
+}
+
+/* Opcional: efecto hover para resaltar aún más la card central */
+.proyecto.focus:hover {
+    transform: translateZ(0px);
+}
+
+
+.tegnologias{
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.tegnologias span{
+    background: #3f71ae1c;
+    padding: 2px 8px;
+    color: #3F71AE;
+    font-weight: bold;
+    font-size: 12px;
+    border-radius: 20px;
+}
