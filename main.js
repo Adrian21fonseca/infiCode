@@ -28,3 +28,64 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 300); // delay antes de salir el logo
     }, { once: true });
 });
+
+
+
+// Animación de aparición de las tarjetas
+const estadisticasTrabajo = document.querySelectorAll('.como-trabajamos .estadistica');
+
+const observerTrabajo = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.style.animation = "fadeUp 0.8s forwards";
+            obs.unobserve(entry.target);
+        }
+    });
+},{threshold: 0.5});
+
+estadisticasTrabajo.forEach(stat => observerTrabajo.observe(stat));
+
+// Contadores animados
+const counters = document.querySelectorAll('.contador');
+
+const startCounting = (entry) => {
+    const counter = entry.target;
+    const target = +counter.getAttribute('data-target');
+    const duration = 2000; // 2 segundos
+    const startTime = performance.now();
+
+    const updateCount = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        counter.textContent = Math.floor(progress * target);
+        if (progress < 1) requestAnimationFrame(updateCount);
+    };
+
+    requestAnimationFrame(updateCount);
+};
+
+const observerCounters = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            startCounting(entry);
+            obs.unobserve(entry.target);
+        }
+    });
+},{threshold: 0.5});
+
+counters.forEach(counter => observerCounters.observe(counter));
+
+
+const servicios = document.querySelectorAll('.servicio');
+
+const observerServicios = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.style.animation = "fadeUp 0.8s forwards";
+            obs.unobserve(entry.target);
+        }
+    });
+},{threshold: 0.3});
+
+servicios.forEach(servicio => observerServicios.observe(servicio));
+

@@ -1,7 +1,8 @@
 tsParticles.load("tsparticles", {
+    fullScreen: { enable: false },
     fpsLimit: 60,
     background: {
-        color: "#f4f4f4ff",
+        color: "#ffffffff",
     },
     particles: {
         number: {
