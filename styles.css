@@ -445,6 +445,58 @@ header a:hover{
     color: #757575;
 }
 
+/* ------- ESTILOS DE DINAMICAS ------- */
+
+#dinamica{
+    padding: 80px 30px;
+    text-align: center;
+}
+
+#dinamica .contenedor{
+    width: 100%;
+}
+
+#dinamica h2{
+    font-size: 32px;
+}
+
+#dinamica h2 span{
+    color: #3F71AE;
+}
+
+.dinamica-informativa{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+    font-size: 14px;
+    color: #757575;
+    padding: 10px 15px;
+    text-align: left;
+    border-radius: 10px;
+    cursor: default;
+
+    box-shadow: 0 0 6px #1c1c1c38;
+}
+
+.dinamica-informativa h2{
+    font-size: 20px !important;
+    color: #1c1c1c;
+    margin: 0;
+}
+
+.dinamica-informativa p{
+    text-align: justify;
+    margin: 0;
+}
+
+.dinamica-informativa a{
+    color: #3F71AE;
+    font-weight: bold;
+    text-decoration: underline;
+    width: fit-content;
+}
+
 
 /* ------- ESTILOS DEL CONTACTO ------- */
 

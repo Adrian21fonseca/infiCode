@@ -16,6 +16,10 @@
     .info-principal{
         justify-content: center;
     }
+
+    .dinamica-informativa{
+        margin: 0 auto;
+    }
 }
 
 @media (max-width: 920px){
