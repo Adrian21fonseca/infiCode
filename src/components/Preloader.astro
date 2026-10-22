@@ -1,0 +1,57 @@
+<div class="preloader" id="preloader" role="status" aria-label="Cargando InfiCode">
+    <img class="preloader__logo" src="/ICONs/infiCode-icon_4K-png.png" alt="InfiCode">
+</div>
+
+<style is:global>
+    .preloader {
+        position: fixed;
+        inset: 0;
+        z-index: 2000;
+        display: grid;
+        place-items: center;
+        background: #fff;
+        opacity: 1;
+        transition: opacity 500ms ease;
+    }
+
+    .preloader.is-hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .preloader__logo {
+        width: clamp(120px, 24vw, 220px);
+        height: auto;
+        opacity: 0;
+        transform: scale(0.88);
+        animation: preloader-logo-reveal 2.4s ease forwards;
+    }
+
+    @keyframes preloader-logo-reveal {
+        0% {
+            opacity: 0;
+            transform: scale(0.88);
+        }
+
+        55%,
+        72% {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        100% {
+            opacity: 0;
+            transform: scale(1.04);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .preloader__logo {
+            animation-duration: 1ms;
+        }
+
+        .preloader {
+            transition-duration: 1ms;
+        }
+    }
+</style>

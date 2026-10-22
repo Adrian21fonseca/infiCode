@@ -1,0 +1,120 @@
+---
+const projects = [
+    {
+        name: "Psicología InHouse",
+        image: "/IMGs/psicologiainhouse-project_4K.jpg",
+        description: "Un espacio de acompañamiento emocional que promueve el bienestar, el autoconocimiento y el crecimiento personal.",
+        highlights: ["Psicología", "Bienestar emocional", "Acompañamiento"],
+        url: "https://psicologiainhouse.com.co/"
+    },
+    {
+        name: "Sentio Psicoterapia",
+        image: "/IMGs/sentio.png",
+        description: "Un espacio de psicoterapia para adolescentes y adultos, con atención presencial y virtual y acompañamiento basado en evidencia.",
+        highlights: ["Psicoterapia", "Atención virtual y presencial"],
+        url: "https://sentiopsicoterapia.com/"
+    },
+    {
+        name: "Aleore Psicóloga",
+        image: "/IMGs/ale-ore.png",
+        description: "Una propuesta de contenido estratégico para profesionales de la psicología que quieren comunicar el valor de sus procesos terapéuticos.",
+        highlights: ["Estrategia de contenido", "Psicología"],
+        url: "https://aleorepsicologa.com/pacientes-comprometidos/"
+    },
+    {
+        name: "Deisy Álvarez · Negocios digitales",
+        image: "/IMGs/deisy-alvarez.png",
+        description: "Una plataforma que reúne oportunidades y formaciones digitales seleccionadas para explorar nuevas habilidades y negocios.",
+        highlights: ["Negocios digitales", "Formación online"],
+        url: "https://deisyalvarez.com/"
+    }
+];
+---
+<section id="Proyectos">
+    <div class="texto-informativo">
+        <h2>
+            Proyectos <span>Destacados</span>
+        </h2>
+
+        <p>Una mirada a las experiencias digitales que hacemos realidad</p>
+    </div>
+
+    <div
+        class="project-carousel"
+        data-project-carousel
+        role="region"
+        aria-roledescription="carrusel"
+        aria-label="Proyectos recientes"
+        tabindex="0"
+    >
+        <div class="project-stage">
+            {projects.map((project, index) => (
+                <article
+                    class:list={["project-slide", index === 0 ? "is-current" : "is-hidden"]}
+                    data-project-slide
+                    data-index={index}
+                    aria-hidden={index === 0 ? "false" : "true"}
+                    aria-label={`${index + 1} de ${projects.length}: ${project.name}`}
+                >
+                    <img class="project-slide__image" src={project.image} alt={`Vista del proyecto ${project.name}`} />
+                    <div class="project-slide__scrim"></div>
+
+                    <div class="project-slide__content">
+                        <div class="project-slide__meta">
+                            <span class="project-slide__number">{String(index + 1).padStart(2, "0")}</span>
+                            {project.status && <span class="project-slide__status">{project.status}</span>}
+                        </div>
+
+                        <h3>{project.name}</h3>
+                        <p>{project.description}</p>
+
+                        <div class="project-slide__technologies" aria-label="Enfoque del proyecto">
+                            {project.highlights.map((highlight) => (
+                                <span>{highlight}</span>
+                            ))}
+                        </div>
+
+                        <a class="project-slide__link" href={project.url} target="_blank" rel="noreferrer">
+                            Explorar proyecto <span aria-hidden="true">↗</span>
+                        </a>
+                    </div>
+                </article>
+            ))}
+        </div>
+
+        <div class="project-controls">
+            <button class="project-control project-control--arrow" type="button" data-project-previous aria-label="Ver proyecto anterior">
+                <span aria-hidden="true">←</span>
+            </button>
+
+            <div class="project-controls__middle">
+                <span class="project-counter" data-project-counter aria-live="off">01 / 04</span>
+                <div class="project-pagination" aria-label="Elegir proyecto">
+                    {projects.map((project, index) => (
+                        <button
+                            class:list={["project-pagination__dot", index === 0 && "is-current"]}
+                            type="button"
+                            data-project-index={index}
+                            aria-label={`Ver proyecto ${index + 1}: ${project.name}`}
+                            aria-current={index === 0 ? "true" : undefined}
+                        ></button>
+                    ))}
+                </div>
+                <button
+                    class="project-control project-control--playback"
+                    type="button"
+                    data-project-toggle
+                    aria-label="Pausar reproducción automática"
+                    aria-pressed="false"
+                    title="Pausar reproducción automática"
+                >
+                    <span aria-hidden="true">Ⅱ</span>
+                </button>
+            </div>
+
+            <button class="project-control project-control--arrow" type="button" data-project-next aria-label="Ver siguiente proyecto">
+                <span aria-hidden="true">→</span>
+            </button>
+        </div>
+    </div>
+</section>
