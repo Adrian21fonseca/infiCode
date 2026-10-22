@@ -827,6 +827,23 @@ header a:hover{
 }
 
 @media (max-width: 700px) {
+    #Proyectos > .texto-informativo {
+        margin: 0 0 40px;
+        padding: 0 18px;
+    }
+
+    #Proyectos > .texto-informativo h2 {
+        font-size: clamp(26px, 8vw, 34px);
+        line-height: 1.15;
+        margin-bottom: 16px;
+        margin-right: 30px;
+    }
+
+    #Proyectos > .texto-informativo p {
+        font-size: 16px;
+        margin-right: 30px;
+    }
+
     .project-carousel {
         --project-width: 84vw;
     }
