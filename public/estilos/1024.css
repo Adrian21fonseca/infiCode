@@ -188,17 +188,6 @@
     }
 }
 
-@media (max-width: 400px){
-    .card-informativo-Proyecto{
-        width: 100%;
-    }
-
-    .tegnologias{
-        display: flex;
-        flex-wrap: wrap;
-    }
-}
-
 @media (max-width: 360px){
     #hero h1{
         font-size: 36px;
